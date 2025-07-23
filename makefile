@@ -1,4 +1,7 @@
+TARGETS = main.c tree.c
+EXECUTABLE = main
+
 make:
-	gcc main.c tree.c -o main
+	gcc $(TARGETS) -o $(EXECUTABLE)
 clean:
-	rm -f main
+	rm -f $(EXECUTABLE)
