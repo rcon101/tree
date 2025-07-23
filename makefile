@@ -1,5 +1,5 @@
 TARGETS = main.c tree.c
-EXECUTABLE = main
+EXECUTABLE = main.o
 
 make:
 	gcc $(TARGETS) -o $(EXECUTABLE)
