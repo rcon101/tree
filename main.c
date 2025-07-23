@@ -21,6 +21,9 @@ int main(int argc, char** argv) {
     printReversePostOrder(head);
     printf("Printing reversePreOrder...\n");
     printReversePreOrder(head);
+
+    printf("Number of Nodes: %d\n", numNodes(head));
+
     deleteTree(head);
     return 0;
 }
