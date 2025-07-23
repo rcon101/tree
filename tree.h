@@ -25,6 +25,10 @@ struct Node* findMax(struct Node* head);
 struct Node* getSubtree(struct Node* head, int value);
 
 //cleanup/helper functions
+struct Node* rotateLeft(struct Node* parent);
+int treeToVine(struct Node **root);
+struct Node* compress(struct Node* root, int m);
+struct Node* vineToTree(Node *root, int count);
 struct Node* generateTree(int numNodes);
 void deleteTree(struct Node* head);
 

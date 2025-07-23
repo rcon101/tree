@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
+#include <math.h>
 
 #include "tree.h"
 
@@ -133,8 +134,68 @@ struct Node* getSubtree(struct Node* head, int value) {
     else if(value > head->value) head->right = getSubtree(head->right, value);
 }
 
+struct Node* rotateLeft(struct Node* parent) {
+    struct Node* child = parent->right;
+    parent->right = child->right;
+    child->right = parent->right->left;
+    parent->right->left = child;
+    return parent;
+}
+
+int treeToVine(struct Node **root) {
+    struct Node *pseudo = (struct Node*)malloc(sizeof(struct Node));
+    pseudo->right = *root;
+    pseudo->left = NULL;
+
+    struct Node *tail = pseudo;
+    struct Node *rest = tail->right;
+    int count = 0;
+
+    while (rest) {
+        if (rest->left) {
+            Node *tmp = rest->left;
+            rest->left = tmp->right;
+            tmp->right = rest;
+            rest = tmp;
+            tail->right = tmp;
+        } else {
+            tail = rest;
+            rest = rest->right;
+            count++;
+        }
+    }
+    *root = pseudo->right;
+    free(pseudo);
+    return count;
+}
+
+
+struct Node* compress(struct Node* root, int m) {
+    struct Node* pseudo = malloc(sizeof(Node));
+    pseudo->right = root;
+    struct Node* scanner = pseudo;
+
+    for (int i = 0; i < m; i++) {
+        rotateLeft(scanner);
+        scanner = scanner->right;
+    }
+    root = pseudo->right;
+    free(pseudo);
+    return root;
+}
+
+struct Node* vineToTree(Node *root, int count) {
+    int full = (1 << (int)floor(log2(count + 1))) - 1;
+    root = compress(root, count - full);
+    for (int m = full / 2; m > 0; m /= 2) {
+        root = compress(root, m);
+    }
+    return root;
+}
+
 struct Node* balanceTree(struct Node* head) {
-    return NULL;
+    int n = treeToVine(&head);
+    return vineToTree(head, n);
 }
 
 struct Node* generateTree(int numNodes){

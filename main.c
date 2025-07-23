@@ -12,7 +12,8 @@ int main(int argc, char** argv) {
     }
     printf("Printing inOrder...\n");
     printInOrder(head);
-    /*printf("Printing postOrder...\n");
+    /*
+    printf("Printing postOrder...\n");
     printPostOrder(head);
     printf("Printing preOrder...\n");
     printPreOrder(head);
@@ -27,16 +28,23 @@ int main(int argc, char** argv) {
     printTree(head, 0);
 
     deleteNode(head, 2);
-
     printf("head (%d Nodes):\n", numNodes(head));
     printTree(head, 0);
 
-    struct Node* subtree_a = getSubtree(head, 5);
+    head = balanceTree(head);
+    printf("balanced head (%d Nodes):\n", numNodes(head));
+    printTree(head, 0);
+
+    struct Node* subtree_a = getSubtree(head, 8);
     printf("Subtree A (%d nodes):\n", numNodes(subtree_a));
     printTree(subtree_a, 0);
 
-    struct Node* rtree = generateTree(10);
+    struct Node* rtree = generateTree(1000);
     printf("rtree (%d Nodes):\n", numNodes(rtree));
+    printTree(rtree, 0);
+
+    rtree = balanceTree(rtree);
+    printf("balanced rtree (%d Nodes):\n", numNodes(rtree));
     printTree(rtree, 0);
 
     deleteTree(head);
