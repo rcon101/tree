@@ -24,6 +24,10 @@ int main(int argc, char** argv) {
 
     printf("Number of Nodes: %d\n", numNodes(head));
 
+    struct Node* subtree_a = getSubtree(head, 5);
+    printf("Subtree A (%d nodes): \n", numNodes(subtree_a));
+    printInOrder(subtree_a);
+
     deleteTree(head);
     return 0;
 }

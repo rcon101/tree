@@ -68,10 +68,14 @@ void printReversePreOrder(struct Node* head){
 int numNodes(struct Node* head) {
     if(head==NULL) return 0;
     return 1 + numNodes(head->left) + numNodes(head->right);
-
 }
 
-
+struct Node* getSubtree(struct Node* head, int value) {
+    if(head==NULL || head->value == value) return head;
+    if(value < head->value) return getSubtree(head->left, value);
+    else if(value > head->value) return getSubtree(head->right, value);
+    else return NULL;
+}
 
 void deleteTree(struct Node* head){
     if(head != NULL) {

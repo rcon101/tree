@@ -14,9 +14,11 @@ void printPreOrder(struct Node* head);
 void printReverseInOrder(struct Node* head);
 void printReversePostOrder(struct Node* head);
 void printReversePreOrder(struct Node* head);
+void printTree(struct Node* head);
 
 //getters and setters
 int numNodes(struct Node* head);
+struct Node* getSubtree(struct Node* head, int value);
 
 //cleanup/helper functions
 void deleteTree(struct Node* head);
