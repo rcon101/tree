@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <time.h>
 #include "tree.h"
 
 int main(int argc, char** argv) {
@@ -11,7 +12,7 @@ int main(int argc, char** argv) {
     }
     printf("Printing inOrder...\n");
     printInOrder(head);
-    printf("Printing postOrder...\n");
+    /*printf("Printing postOrder...\n");
     printPostOrder(head);
     printf("Printing preOrder...\n");
     printPreOrder(head);
@@ -21,13 +22,24 @@ int main(int argc, char** argv) {
     printReversePostOrder(head);
     printf("Printing reversePreOrder...\n");
     printReversePreOrder(head);
+    */
+    printf("head  (%d Nodes):\n", numNodes(head));
+    printTree(head, 0);
 
-    printf("Number of Nodes: %d\n", numNodes(head));
+    deleteNode(head, 2);
+
+    printf("head (%d Nodes):\n", numNodes(head));
+    printTree(head, 0);
 
     struct Node* subtree_a = getSubtree(head, 5);
-    printf("Subtree A (%d nodes): \n", numNodes(subtree_a));
-    printInOrder(subtree_a);
+    printf("Subtree A (%d nodes):\n", numNodes(subtree_a));
+    printTree(subtree_a, 0);
+
+    struct Node* rtree = generateTree(10);
+    printf("rtree (%d Nodes):\n", numNodes(rtree));
+    printTree(rtree, 0);
 
     deleteTree(head);
+    deleteTree(rtree);
     return 0;
 }
