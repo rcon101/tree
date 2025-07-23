@@ -9,7 +9,18 @@ int main(int argc, char** argv) {
     for(int i=0; i<n; i++) {
         head = insertNode(head, nums[i]);
     }
+    printf("Printing inOrder...\n");
     printInOrder(head);
+    printf("Printing postOrder...\n");
+    printPostOrder(head);
+    printf("Printing preOrder...\n");
+    printPreOrder(head);
+    printf("Printing reverseInOrder...\n");
+    printReverseInOrder(head);
+    printf("Printing reversePostOrder...\n");
+    printReversePostOrder(head);
+    printf("Printing reversePreOrder...\n");
+    printReversePreOrder(head);
     deleteTree(head);
     return 0;
 }

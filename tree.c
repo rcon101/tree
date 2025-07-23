@@ -28,6 +28,45 @@ void printInOrder(struct Node* head){
         printInOrder(head->right);
     }
 }
+
+void printPostOrder(struct Node* head) {
+    if(head!=NULL){
+        printPostOrder(head->left);
+        printPostOrder(head->right);
+        printf("%d\n", head->value);
+    }
+}
+void printPreOrder(struct Node* head){
+    if(head!=NULL){
+        printf("%d\n", head->value);
+        printPreOrder(head->left);
+        printPreOrder(head->right); 
+    }
+}
+void printReverseInOrder(struct Node* head) {
+    if(head != NULL) {
+        printReverseInOrder(head->right);
+        printf("%d\n", head->value);
+        printReverseInOrder(head->left);
+    }
+}
+void printReversePostOrder(struct Node* head){
+    if(head != NULL) {
+        printReversePostOrder(head->right);
+        printReversePostOrder(head->left);
+        printf("%d\n", head->value);
+    }
+}
+void printReversePreOrder(struct Node* head){
+    if(head != NULL) {
+        printf("%d\n", head->value);
+        printReversePreOrder(head->right);
+        printReversePreOrder(head->left);
+    }
+}
+
+
+
 void deleteTree(struct Node* head){
     if(head != NULL) {
         deleteTree(head->left);
