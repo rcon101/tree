@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <time.h>
 #include "tree.h"
 
 int main(int argc, char** argv) {
@@ -26,7 +27,10 @@ int main(int argc, char** argv) {
 
     struct Node* subtree_a = getSubtree(head, 5);
     printf("Subtree A (%d nodes): \n", numNodes(subtree_a));
-    printInOrder(subtree_a);
+    printTree(subtree_a, 0);
+
+    struct Node* rtree = generateTree(1000);
+    printTree(rtree,0);
 
     deleteTree(head);
     return 0;
